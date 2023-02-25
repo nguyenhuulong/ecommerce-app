@@ -79,7 +79,6 @@ const HeroSliderItem = (props) => (
             backgroundColor={props.item.color}
             icon="bx bx-cart"
             animate={true}
-            //size="sm"
           >
             Xem chi tiết
           </Button>

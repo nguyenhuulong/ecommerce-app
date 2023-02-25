@@ -4,7 +4,11 @@
     font-size: 1.1rem;
 
     @include mobile {
-        padding: 40px 0;
+        padding: 40px 0 20px;
+    }
+    
+    @include tablet {
+        padding: 40px 0 20px;
     }
 
     &__logo {

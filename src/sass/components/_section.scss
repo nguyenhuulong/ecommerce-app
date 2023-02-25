@@ -1,0 +1,21 @@
+.section {
+    margin-bottom: 80px;
+
+    @include tablet {
+        margin-bottom: 40px;
+    }
+
+    @include mobile {
+        margin-bottom: 40px;
+    }
+
+    & > * ~ * {
+        margin-top: 70px;
+    }
+
+    &__title {
+        font-size: 2rem;
+        text-transform: capitalize;
+        text-align: center;
+    }
+}

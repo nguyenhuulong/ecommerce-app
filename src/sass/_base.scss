@@ -30,6 +30,10 @@ a:hover {
     color: $main-color;
 }
 
+img {
+    max-width: 100%
+}
+
 @each $color, $val in $colors {
     .color-#{$color} {
         color: $val;

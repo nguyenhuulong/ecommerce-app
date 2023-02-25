@@ -83,6 +83,10 @@
 
             &__btn {
                 overflow: hidden;
+
+                @include tablet {
+                    float: right;
+                }
             }
 
             &__title > span,
