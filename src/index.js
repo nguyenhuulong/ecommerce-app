@@ -1,17 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./assets/boxicons-2.0.7/css/boxicons.min.css"
-import "./sass/index.scss"
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
+
+import "./assets/boxicons-2.0.7/css/boxicons.min.css";
+import "./sass/index.scss";
 import { BrowserRouter } from "react-router-dom";
 import Routing from "./routing/Routing";
 
 const App = () => {
   return (
     <React.StrictMode>
-      <BrowserRouter>
-        <Routing />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routing />
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode>
   );
 };

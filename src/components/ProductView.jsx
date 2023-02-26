@@ -3,9 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import numberWithCommas from "../utils/numberWithCommas";
 import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/shopping-cart/cartItemsSlide";
 
 const ProductView = (props) => {
-  const product = props.product;
+  const dispatch = useDispatch()
+  let product = props.product;
+  if(product === undefined) product = {
+    price: 0,
+    title: "",
+    colors: [],
+    size: []
+  }
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [descriptionExpand, setDescriptionExpand] = useState(false);
 
@@ -28,7 +37,6 @@ const ProductView = (props) => {
   }, [product]);
 
   const check = () => {
-    let res = true;
     if(color == undefined) {
         alert('Vui lòng chọn màu sắc!')
         return false
@@ -41,14 +49,32 @@ const ProductView = (props) => {
   };
 
   const addToCart = () => {
-    if(check()) console.log({color, size, quantity})
+    if(check()) {
+      dispatch(addItem({
+        slug: product.slug,
+        color: color,
+        size: size,
+        quantity: quantity,
+        price: product.price
+      }))
+      alert("success")
+    }
+  };
+
+  const goToCart = () => {
+    if(check()) {
+      dispatch(addItem({
+        slug: product.slug,
+        color: color,
+        size: size,
+        quantity: quantity,
+        price: product.price
+      }))
+      navigate('/cart')
+    }
   };
 
   const navigate = useNavigate()
-
-  const goToCart = () => {
-    if(check()) navigate('/cart')
-  };
 
   return (
     <div className="product">
@@ -176,7 +202,7 @@ const ProductView = (props) => {
 };
 
 ProductView.propTypes = {
-  product: PropTypes.object.isRequired,
+  product: PropTypes.object,
 };
 
 export default ProductView;
