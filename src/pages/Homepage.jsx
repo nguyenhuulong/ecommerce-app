@@ -36,7 +36,7 @@ const Homepage = () => {
         </SectionBody>
       </Section>
       <Section>
-        <SectionTitle>top sản phẩm bán chạy trong tuần</SectionTitle>
+        <SectionTitle>top sản phẩm bán chạy</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
             {

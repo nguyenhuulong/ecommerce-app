@@ -11,8 +11,10 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Homepage />} />
-        <Route path="catalog" element={<Catalog />} />
-        <Route path="catalog/:slug" element={<Product />} />
+        <Route path="catalog">
+          <Route index element={<Catalog />} />
+          <Route path=":id" element={<Product />} />
+        </Route>
         <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
