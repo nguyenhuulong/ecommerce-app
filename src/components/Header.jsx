@@ -13,11 +13,11 @@ const mainNav = [
   },
   {
     display: "Phụ kiện",
-    path: "/accessories",
+    path: "#",
   },
   {
     display: "Liên hệ",
-    path: "/contact",
+    path: "#",
   },
 ];
 
@@ -26,7 +26,6 @@ const Header = () => {
   const activeNav = mainNav.findIndex(e => e.path === pathname);
   const headerRef = useRef(null)
   useEffect(() => {
-    // chua su dung duoc 
     const scrollHandler = () => {
       if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         headerRef.current.classList.add('shrink')

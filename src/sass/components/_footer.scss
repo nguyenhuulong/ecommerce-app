@@ -1,35 +1,36 @@
 .footer {
-    padding: 70px 0;
-    box-shadow: $box-shadow;
-    font-size: 1.1rem;
+  padding: 70px 0;
+  box-shadow: $box-shadow;
+  font-size: 1.1rem;
 
-    @include mobile {
-        padding: 40px 0 20px;
-    }
-    
-    @include tablet {
-        padding: 40px 0 20px;
-    }
+  @include mobile {
+    padding: 40px 0 20px;
+  }
 
-    &__logo {
-        height: 38px;
-    }
+  @include tablet {
+    padding: 40px 0 20px;
+  }
 
-    &__about {
-        p {
-            margin-bottom: 2rem;
-        }
-    }
+  &__logo {
+    height: 38px;
+  }
 
-    &__title{
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-        font-weight: 600;
+  &__about {
+    p,
+    img {
+      margin-bottom: 2rem;
     }
+  }
 
-    &__content {
-        p {
-            margin-bottom: 1.25rem;
-        }
+  &__title {
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  &__content {
+    p {
+      margin-bottom: 1.25rem;
     }
+  }
 }

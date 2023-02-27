@@ -1,7 +1,6 @@
 .product-view__modal {
     position: fixed;
     z-index: 101;
-    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
@@ -26,16 +25,28 @@
         opacity: 0;
         transform: translateY(-250px);
         transition: tranform 0.3s ease;
+        overflow-y: scroll;
+        height: 90%;
+        top: 50%;
+        transform: translateY(-50%);
 
         &__close {
             position: absolute;
             right: 0;
             top: 0;
+
+            .btn {
+                position: sticky;
+                top: 0;
+            }
+        }
+
+        .product__info__item button {
+            width: 100%;
         }
     }
 
     &.active &__content {
         opacity: 1;
-        transform: translateY(0);
     }
 }

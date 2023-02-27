@@ -5,8 +5,9 @@ const Button = props => {
     const bg = props.backgroundColor ? 'bg-' + props.backgroundColor : 'bg-main';
     const size = props.size ? 'btn-' + props.size : ''
     const animate = props.animate ? 'btn-animate' : ''
+    const secondary = props.secondary ? 'btn-secondary' : ''
     return (
-        <button className={`btn ${bg} ${size} ${animate}`} onClick={props.onClick ? () => props.onClick() : null}>
+        <button className={`btn ${bg} ${size} ${animate} ${secondary}`} onClick={props.onClick ? () => props.onClick() : null}>
             <span className="btn__txt">{props.children}</span>
             {
                 props.icon ? (

@@ -4,9 +4,18 @@
     @include tablet {
         flex-wrap: wrap;
     }
+    &__title {
+        padding-top: 40px;
+        font-size: 3rem;
+        text-align: center;
+        color: $main-color;
+
+        i {
+            margin-right: 10px;
+        }
+    }
 
     &__info {
-        // width: 40%;
         margin-right: 30px;
         margin-top: 30px;
         padding: 20px;
@@ -50,6 +59,17 @@
 
     &__list {
         flex-grow: 1;
+        box-shadow: $box-shadow;
+        padding: 20px;
+        margin-right: 30px;
+        margin-top: 30px;
+
+        &__alert {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $main-color;
+        }
     }
 
     &__item {
@@ -81,14 +101,22 @@
 
             &__name {
                 width: 40%;
+                font-weight: 600;
+                
+                @include flex(flex-start, space-between);
 
                 @include mobile {
                     width: 100%;
+                }
+
+                &__item {
+                    text-transform: capitalize;
                 }
             }
 
             &__name, &__price {
                 font-size: 1.25rem;
+                font-weight: 600;
             }
 
             &__del {

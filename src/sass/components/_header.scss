@@ -38,7 +38,7 @@
         pointer-events: none;
 
         img {
-            height: 28px;
+            height: 60px;
         }
     }
 
@@ -48,7 +48,7 @@
         font-size: 1.5rem;
         
 
-        &__item ~ &__item { // select item o ngay sau item 
+        &__item ~ &__item {
             margin-left: 39px;
 
             @include tablet {

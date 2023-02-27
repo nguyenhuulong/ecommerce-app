@@ -10,7 +10,7 @@ function ProductViewModal() {
     const productSlug = useSelector((state) => state.productModal.value)
     const dispatch = useDispatch()
     const [product, setProduct] = useState(undefined)
-    //const product = productData.getProductBySlug('quan-jean-phong-cach-18')
+
     useEffect(() => {
       setProduct(productData.getProductBySlug(productSlug))
     }, [productSlug])

@@ -52,4 +52,9 @@
     &-block {
         width: 100%;
     }
+
+    &-secondary {
+        border: 2px solid $main-color;
+        color: $main-color;
+    }
 }

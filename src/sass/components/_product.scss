@@ -23,6 +23,17 @@
 
       &__item {
         cursor: pointer;
+
+        img {
+          opacity: 0.8;
+        }
+
+        &.active {
+          img {
+            
+            opacity: 1;
+          }
+        }
       }
     }
 
@@ -178,6 +189,8 @@
     height: max-content;
   }
 
+  
+
   &__title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -195,5 +208,5 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-  }
+  } 
 }

@@ -33,8 +33,14 @@ const CartItem = (props) => {
       <div className="cart__item__info">
         <div className="cart__item__info__name">
           <Link to={`/catalog/${item.slug}`}>
-            {`${item.product.title} - ${item.color} - ${item.size}`}
+            {`${item.product.title}`}
           </Link>
+          <div className={`cart__item__info__name__item color-${item.color}`}>
+            {`${item.color}`}
+          </div>
+          <div className="cart__item__info__name__item">
+            {`${item.size}`}
+          </div>
         </div>
         <div className="cart__item__info__price">
           {numberWithCommas(Number(item.product.price))}

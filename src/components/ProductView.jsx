@@ -81,13 +81,13 @@ const ProductView = (props) => {
       <div className="product__image">
         <div className="product__image__list">
           <div
-            className="product__image__list__item"
+            className={`product__image__list__item ${previewImg === product.image01 ? "active" : ""}`}
             onClick={() => setPreviewImg(product.image01)}
           >
             <img src={product.image01} alt="" />
           </div>
           <div
-            className="product__image__list__item"
+            className={`product__image__list__item ${previewImg === product.image02 ? "active" : ""}`}
             onClick={() => setPreviewImg(product.image02)}
           >
             <img src={product.image02} alt="" />
@@ -111,6 +111,7 @@ const ProductView = (props) => {
             >
               {descriptionExpand ? "thu gọn" : "xem thêm"}
             </Button>
+
           </div>
         </div>
       </div>
@@ -176,8 +177,8 @@ const ProductView = (props) => {
           </div>
         </div>
         <div className="product__info__item">
-          <Button onClick={addToCart}>thêm vào giỏ</Button>
-          <Button onClick={goToCart}>mua ngay</Button>
+          <Button onClick={addToCart} icon="bx bx-cart" animate={true}>thêm vào giỏ</Button>
+          <Button onClick={goToCart} icon="bx bx-dollar-circle" animate={true}>mua ngay</Button>
         </div>
       </div>
       <div
