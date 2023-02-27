@@ -1,6 +1,6 @@
 # E-Commerce App Cửa hàng bán quần áo
 
-Link Vercel: https://ecommerce-lv553ctzf-nguyenhuulong.vercel.app/
+Link Vercel: https://ecommerce-app-nguyenhuulong.vercel.app/
 
 Công nghệ sử dụng: React, Redux
 
@@ -24,6 +24,5 @@ Chạy code ở local
 ## Future work:
 
 - Authentication with Firebase
-- Customize scrollbar, fix modal scrollbar, close modal button
+- Fix modal scrollbar, close modal button
 - Nice alert
-- Payment site
