@@ -27,5 +27,3 @@ Chạy code ở local
 - Nice alert
 - Remove all feature in Payment site
 - Responsive Filter
-- Fix modal scrollbar, close modal button
-- Nice alert
