@@ -22,24 +22,27 @@ const mainNav = [
 ];
 
 const Header = () => {
-  const {pathname} = useLocation();
-  const activeNav = mainNav.findIndex(e => e.path === pathname);
-  const headerRef = useRef(null)
+  const { pathname } = useLocation();
+  const activeNav = mainNav.findIndex((e) => e.path === pathname);
+  const headerRef = useRef(null);
   useEffect(() => {
     const scrollHandler = () => {
-      if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('shrink')
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("shrink");
       } else {
-        headerRef.current.classList.remove('shrink')
+        headerRef.current.classList.remove("shrink");
       }
-    }
-    window.addEventListener('scroll', scrollHandler)
+    };
+    window.addEventListener("scroll", scrollHandler);
     return () => {
-      window.removeEventListener('scroll', scrollHandler)
-    }
-  }, [])
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
   const menuLeft = useRef(null);
-  const menuToggle = () => menuLeft.current.classList.toggle('active');
+  const menuToggle = () => menuLeft.current.classList.toggle("active");
   return (
     <div className="header" ref={headerRef}>
       <div className="container">
@@ -59,8 +62,10 @@ const Header = () => {
             {mainNav.map((item, index) => (
               <div
                 key={index}
-                className={`header__menu__item header__menu__left__item ${index === activeNav ? 'active' : ''}`}
-                onClick={menuToggle}              
+                className={`header__menu__item header__menu__left__item ${
+                  index === activeNav ? "active" : ""
+                }`}
+                onClick={menuToggle}
               >
                 <Link to={item.path}>
                   <span>{item.display}</span>

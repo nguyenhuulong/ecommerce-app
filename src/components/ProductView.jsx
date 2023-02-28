@@ -1,26 +1,35 @@
-import PropTypes from "prop-types";
-import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
-import numberWithCommas from "../utils/numberWithCommas";
-import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addItem } from "../redux/shopping-cart/cartItemsSlide";
+import PropTypes from "prop-types";
+
+import Button from "./Button";
+
+import numberWithCommas from "../utils/numberWithCommas";
+import { addItem } from "../redux/shopping-cart/cartItemsSlice";
+import { remove } from "../redux/product-modal/productModalSlice";
 
 const ProductView = (props) => {
-  const dispatch = useDispatch()
   let product = props.product;
-  if(product === undefined) product = {
-    price: 0,
-    title: "",
-    colors: [],
-    size: []
-  }
+
+  if (product === undefined)
+    product = {
+      price: 0,
+      title: "",
+      colors: [],
+      size: [],
+    };
+
   const [previewImg, setPreviewImg] = useState(product.image01);
+
   const [descriptionExpand, setDescriptionExpand] = useState(false);
 
   const [color, setColor] = useState(undefined);
+
   const [size, setSize] = useState(undefined);
+
   const [quantity, setQuantity] = useState(1);
+
   const updateQuantity = (type) => {
     if (type === "plus") {
       setQuantity(quantity + 1);
@@ -28,6 +37,7 @@ const ProductView = (props) => {
       setQuantity(quantity - 1 < 1 ? 1 : quantity - 1);
     }
   };
+
   useEffect(() => {
     setPreviewImg(product.image01);
     setQuantity(1);
@@ -36,58 +46,69 @@ const ProductView = (props) => {
     setDescriptionExpand(false);
   }, [product]);
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const check = () => {
-    if(color == undefined) {
-        alert('Vui lòng chọn màu sắc!')
-        return false
+    if (color === undefined) {
+      alert("Vui lòng chọn màu sắc!");
+      return false;
     }
-    if(size == undefined) {
-        alert('Vui lòng chọn kích cỡ!')
-        return false
+    if (size === undefined) {
+      alert("Vui lòng chọn kích cỡ!");
+      return false;
     }
-    return true
+    return true;
   };
 
   const addToCart = () => {
-    if(check()) {
-      dispatch(addItem({
-        slug: product.slug,
-        color: color,
-        size: size,
-        quantity: quantity,
-        price: product.price
-      }))
-      alert("success")
+    if (check()) {
+      dispatch(
+        addItem({
+          slug: product.slug,
+          color: color,
+          size: size,
+          quantity: quantity,
+          price: product.price,
+        })
+      );
+      dispatch(remove());
     }
   };
 
   const goToCart = () => {
-    if(check()) {
-      dispatch(addItem({
-        slug: product.slug,
-        color: color,
-        size: size,
-        quantity: quantity,
-        price: product.price
-      }))
-      navigate('/cart')
+    if (check()) {
+      dispatch(
+        addItem({
+          slug: product.slug,
+          color: color,
+          size: size,
+          quantity: quantity,
+          price: product.price,
+        })
+      );
+      dispatch(remove());
+      navigate("/cart");
     }
   };
-
-  const navigate = useNavigate()
 
   return (
     <div className="product">
       <div className="product__image">
         <div className="product__image__list">
           <div
-            className={`product__image__list__item ${previewImg === product.image01 ? "active" : ""}`}
+            className={`product__image__list__item ${
+              previewImg === product.image01 ? "active" : ""
+            }`}
             onClick={() => setPreviewImg(product.image01)}
           >
             <img src={product.image01} alt="" />
           </div>
           <div
-            className={`product__image__list__item ${previewImg === product.image02 ? "active" : ""}`}
+            className={`product__image__list__item ${
+              previewImg === product.image02 ? "active" : ""
+            }`}
             onClick={() => setPreviewImg(product.image02)}
           >
             <img src={product.image02} alt="" />
@@ -111,7 +132,6 @@ const ProductView = (props) => {
             >
               {descriptionExpand ? "thu gọn" : "xem thêm"}
             </Button>
-
           </div>
         </div>
       </div>
@@ -177,27 +197,33 @@ const ProductView = (props) => {
           </div>
         </div>
         <div className="product__info__item">
-          <Button onClick={addToCart} icon="bx bx-cart" animate={true}>thêm vào giỏ</Button>
-          <Button onClick={goToCart} icon="bx bx-dollar-circle" animate={true}>mua ngay</Button>
+          <Button onClick={addToCart} icon="bx bx-cart" animate={true}>
+            thêm vào giỏ
+          </Button>
+          <Button onClick={goToCart} icon="bx bx-dollar-circle" animate={true}>
+            mua ngay
+          </Button>
         </div>
       </div>
       <div
-          className={`product-description mobile ${descriptionExpand ? "expand" : ""}`}
-        >
-          <div className="product-description__title">Chi tiết sản phẩm</div>
-          <div
-            className="product-description__content"
-            dangerouslySetInnerHTML={{ __html: product.description }}
-          ></div>
-          <div className="product-description__toggle">
-            <Button
-              size="sm"
-              onClick={() => setDescriptionExpand(!descriptionExpand)}
-            >
-              {descriptionExpand ? "thu gọn" : "xem thêm"}
-            </Button>
-          </div>
+        className={`product-description mobile ${
+          descriptionExpand ? "expand" : ""
+        }`}
+      >
+        <div className="product-description__title">Chi tiết sản phẩm</div>
+        <div
+          className="product-description__content"
+          dangerouslySetInnerHTML={{ __html: product.description }}
+        ></div>
+        <div className="product-description__toggle">
+          <Button
+            size="sm"
+            onClick={() => setDescriptionExpand(!descriptionExpand)}
+          >
+            {descriptionExpand ? "thu gọn" : "xem thêm"}
+          </Button>
         </div>
+      </div>
     </div>
   );
 };

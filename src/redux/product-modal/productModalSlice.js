@@ -1,22 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    value: null
-}
+  value: null,
+};
 
 export const productModalSlice = createSlice({
-    name: 'productModal',
-    initialState,
-    reducers: {
-        set: (state, action) => {
-            state.value = action.payload
-        },
-        remove: (state) => {
-            state.value = null
-        }
-    }
-})
+  name: "productModal",
+  initialState,
+  reducers: {
+    set: (state, action) => {
+      console.log(document.getElementsByClassName("header")[0]);
+      state.value = action.payload;
 
-export const { set, remove } = productModalSlice.actions
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = "8px";
+      document.getElementsByClassName("header")[0].style.paddingRight = "8px";
+      document.getElementsByClassName("header__logo")[0].style.paddingRight = "8px";
+    },
+    remove: (state) => {
+      state.value = null;
 
-export default productModalSlice.reducer
+      document.body.style.overflow = "unset";
+      document.body.style.paddingRight = "0px";
+      document.getElementsByClassName("header")[0].style.paddingRight = "0px";
+      document.getElementsByClassName("header__logo")[0].style.paddingRight = "0px";
+    },
+  },
+});
+
+export const { set, remove } = productModalSlice.actions;
+
+export default productModalSlice.reducer;

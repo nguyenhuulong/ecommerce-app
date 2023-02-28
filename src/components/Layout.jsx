@@ -7,7 +7,7 @@ import ProductViewModal from "./ProductViewModal";
 const Layout = () => {
   return (
     <div>
-      <div className="container">
+      <div className="container fit-screen">
         <Header />
         <div className="main">
           <Outlet />
